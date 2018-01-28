@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 // WebSocket
 io.on("connection", socket => {
   console.log("a user conected");
-  socket.on("disconnect", function() {
+  socket.on("disconnect", () => {
     console.log("user disconnected");
   });
 });
