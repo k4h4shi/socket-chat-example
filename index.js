@@ -11,6 +11,11 @@ app.get("/", (req, res) => {
 // WebSocket
 io.on("connection", socket => {
   console.log("a user conected");
+
+  socket.on("chat message", msg => {
+    console.log(`message: ${msg}`);
+  });
+
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
