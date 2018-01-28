@@ -1,11 +1,14 @@
 const app = require("express")();
 const http = require("http").Server(app);
+const server = app.listen(3000);
+const io = require("socket.io")(server);
 
+// HTTP
 app.get("/", (req, res) => {
-  res.sendFile(`${__dirname}/public/index.html`);
+  res.sendFile(`${__dirname}/index.html`);
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`listening on *: ${PORT}`);
+// WebSocket
+io.on("connection", socket => {
+  console.log("a user conected");
 });
